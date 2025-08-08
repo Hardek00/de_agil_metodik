@@ -84,11 +84,101 @@ Du skapar ett **nyckelpar**:
 
 När du ansluter, använder systemet din publika nyckel för att verifiera att du äger den matchande privata nyckeln, utan att den privata nyckeln någonsin lämnar din dator.
 
-### Viktiga kommandon
+### SSH-Agent: Din nyckelhanterare
+
+**SSH-agent** är en bakgrundsprocess som håller dina SSH-nycklar i minnet så du inte behöver skriva lösenord varje gång.
+
+```bash
+# Starta SSH-agent
+eval "$(ssh-agent -s)"
+# Startar agent och sätter miljövariabler så andra kommandon kan hitta den
+
+# Lägg till din privata nyckel till agenten
+ssh-add ~/.ssh/id_rsa
+# Laddar din privata nyckel i minnet
+
+# Lägg till en specifik nyckel (om du har flera)
+ssh-add ~/.ssh/hardek
+# Laddar en nyckel med custom namn
+```
+
+**Varför behövs detta?**
+- **Bekvämlighet:** Skriv lösenord EN gång, inte vid varje git push
+- **Säkerhet:** Nyckeln hålls säkert i minnet, inte på disk
+- **Flera nycklar:** Hantera olika nycklar för olika tjänster
+
+### GitHub SSH vs HTTPS
+
+När du använder GitHub kan du ansluta på två sätt:
+
+**HTTPS (med token):**
+```bash
+git clone https://github.com/Hardek00/mitt-repo.git
+git remote set-url origin https://github.com/Hardek00/mitt-repo.git
+```
+
+**SSH (med nycklar):**
+```bash
+git clone git@github.com:Hardek00/mitt-repo.git
+git remote set-url origin git@github.com:Hardek00/mitt-repo.git
+```
+
+**Skillnaden:**
+- **`https://`** → Använder lösenord/token varje gång
+- **`git@github.com:`** → Använder SSH-nycklar (smidigare)
+
+### Komplett SSH-setup för GitHub
+
+```bash
+# 1. Generera nyckelpar
+ssh-keygen -t rsa -b 4096 -C "din.email@example.com"
+# Välj filnamn (tryck Enter för default) och lösenord
+
+# 2. Starta SSH-agent
+eval "$(ssh-agent -s)"
+
+# 3. Lägg till nyckeln
+ssh-add ~/.ssh/id_rsa
+
+# 4. Kopiera publika nyckeln
+cat ~/.ssh/id_rsa.pub
+# Kopiera output och klistra in på GitHub → Settings → SSH Keys
+
+# 5. Testa anslutningen
+ssh -T git@github.com
+# Ska svara: "Hi username! You've successfully authenticated..."
+
+# 6. Ändra remote till SSH (om repo redan finns)
+git remote set-url origin git@github.com:username/repo-namn.git
+```
+
+### Felsökning SSH
+
+```bash
+# Lista alla nycklar i SSH-agent
+ssh-add -l
+
+# Ta bort alla nycklar från agent
+ssh-add -D
+
+# Debugga SSH-anslutning
+ssh -T -v git@github.com
+# Visar detaljerad output för felsökning
+
+# Kontrollera vilken nyckel som används
+ssh-add -l | grep hardek
+```
+
+### Viktiga kommandon - Utökad
 | Kommando | Beskrivning |
 |---|---|
-| `ssh-keygen -t rsa -b 4096` | Genererar ett nytt SSH-nyckelpar. |
-| `cat ~/.ssh/id_rsa.pub` | Visar din publika nyckel så att du kan kopiera den. |
+| `ssh-keygen -t rsa -b 4096` | Genererar ett nytt SSH-nyckelpar med 4096-bit kryptering. |
+| `eval "$(ssh-agent -s)"` | Startar SSH-agent och sätter miljövariabler. |
+| `ssh-add ~/.ssh/id_rsa` | Laddar privat nyckel i SSH-agent. |
+| `ssh-add -l` | Listar alla nycklar som är laddade i agent. |
+| `cat ~/.ssh/id_rsa.pub` | Visar din publika nyckel för kopiering. |
+| `ssh -T git@github.com` | Testar SSH-anslutning till GitHub. |
+| `git remote set-url origin git@github.com:user/repo.git` | Ändrar remote URL till SSH-format. |
 | `ssh user@hostname` | Ansluter till en fjärrserver. |
 
 ---

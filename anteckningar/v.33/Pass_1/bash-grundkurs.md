@@ -106,4 +106,4 @@ echo "Detta är en ny rad" >> python_filer.txt
 
 Nu när du har gått igenom grunderna är det dags att testa dina kunskaper.
 
-➡️ **Fortsätt till [Bash Övningar](./bash-ovningar.md)** 
+➡️ **Fortsätt till [Bash Övningar](../../../exercises/bash-ovningar.md)** 

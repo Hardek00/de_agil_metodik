@@ -6,4 +6,7 @@ v.38/
 v.39/
 v.40/
 veckoschema_full.md
-.gitignore
+service-account-key.json
+
+# Ignorera hela kod-mappen tillfälligt
+kod/
