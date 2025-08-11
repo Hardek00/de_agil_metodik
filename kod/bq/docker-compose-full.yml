@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Bara extract & load (RAW data)
+  extract-load:
+    build: .
+    command: python main.py
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
+      - GCP_PROJECT_ID=zeta-axiom-468312-f1  # Ändra detta!
+    volumes:
+      - ./service-account-key.json:/app/service-account-key.json:ro
+
+  # Bara transform (strukturerad data)
+  transform:
+    build: .
+    command: python transform.py
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
+      - GCP_PROJECT_ID=zeta-axiom-468312-f1  # Ändra detta!
+    volumes:
+      - ./service-account-key.json:/app/service-account-key.json:ro
+    depends_on:
+      - extract-load
+
+  # Hela pipeline (E + L + T)
+  full-pipeline:
+    build: .
+    command: python pipeline.py
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
+      - GCP_PROJECT_ID=zeta-axiom-468312-f1  # Ändra detta!
+    volumes:
+      - ./service-account-key.json:/app/service-account-key.json:ro

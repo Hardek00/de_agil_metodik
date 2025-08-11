@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  tomelilla-schools-pipeline:
+    build: .
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
+      - GCP_PROJECT_ID=zeta-axiom-468312-f1  
+    volumes:
+      - ./service-account-key.json:/app/service-account-key.json:ro

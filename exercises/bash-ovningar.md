@@ -72,4 +72,56 @@ Dessa övningar är designade för att ge dig praktisk erfarenhet av de grundlä
 4.  Spara och stäng filen.
 5.  Gör skriptet körbart: `chmod +x setup_projekt.sh`
 6.  Kör skriptet: `./setup_projekt.sh`
-7.  Verifiera att den nya katalogstrukturen har skapats. Grattis, du har skapat och kört ditt första Bash-skript! 
+7.  Verifiera att den nya katalogstrukturen har skapats. Grattis, du har skapat och kört ditt första Bash-skript!
+
+---
+
+### Övning 5: Processhantering och systemövervakning
+1.  Visa aktiva processer på ditt system:
+    ```bash
+    # Lista alla processer
+    ps aux
+    
+    # Visa bara processer som innehåller "bash"
+    ps aux | grep bash
+    
+    # Realtid-övervakning (tryck 'q' för att avsluta)
+    top
+    ```
+2.  Skapa en enkel loggfil som ständigt uppdateras:
+    ```bash
+    cd data_engineering_kurs
+    
+    # Skapa ett skript som simulerar en applikation
+    echo '#!/bin/bash' > app_simulator.sh
+    echo 'while true; do' >> app_simulator.sh
+    echo '  echo "$(date): App is running, processing data..." >> app.log' >> app_simulator.sh
+    echo '  sleep 2' >> app_simulator.sh
+    echo 'done' >> app_simulator.sh
+    
+    chmod +x app_simulator.sh
+    ```
+3.  Kör applikationen i bakgrunden och övervaka:
+    ```bash
+    # Starta i bakgrunden
+    ./app_simulator.sh &
+    
+    # Visa background jobs
+    jobs
+    
+    # Följ loggfilen live (öppna ny terminal eller använd Ctrl+C för att avsluta)
+    tail -f app.log
+    ```
+4.  Stoppa processen:
+    ```bash
+    # Hitta process-ID
+    ps aux | grep app_simulator
+    
+    # Stoppa med job-nummer (eller kill PID)
+    kill %1
+    
+    # Verifiera att den stoppat
+    jobs
+    ```
+
+---

@@ -67,13 +67,14 @@ kommando -alternativ argument
 
 > **VARNING:** `rm -rf /` är ett katastrofalt kommando. Använd `rm` med försiktighet! Det finns ingen papperskorg i Bash.
 
-### Läsa filer
+### Läsa och skriva filer
 | Kommando | Beskrivning | Exempel |
 |---|---|---|
 | `cat` | Con**cat**enate (visa hela innehållet i en fil) | `cat fil.txt` |
 | `less` | Visa innehållet sida för sida (mer modernt) | `less stor_loggfil.log` |
 | `head` | Visa de första 10 raderna | `head fil.txt` |
 | `tail` | Visa de sista 10 raderna | `tail -f fil.log` (`-f` följer filen live) |
+| `echo` | Skriv ut text till terminalen (eller till fil med redirection) | `echo "Hello World"` |
 
 ### Pipes och Redirection (Superviktigt!)
 - `|` (Pipe): Skicka output från ett kommando som input till ett annat.

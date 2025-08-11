@@ -1,0 +1,29 @@
+# dbt project configuration
+name: 'tomelilla_schools'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'tomelilla_schools'
+
+# These configurations specify where dbt should look for different types of files.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+models:
+  tomelilla_schools:
+    # Config indicated by + and applies to all files under models/...
+    +materialized: table
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

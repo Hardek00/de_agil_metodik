@@ -9,4 +9,6 @@ veckoschema_full.md
 service-account-key.json
 
 # Ignorera hela kod-mappen tillfälligt
-kod/
+kod/venv/
+venv/
+

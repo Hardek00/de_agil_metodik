@@ -1,0 +1,22 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Installera requirements
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Kopiera kod och service account
+COPY main.py .
+COPY transform.py .
+COPY pipeline.py .
+COPY service-account-key.json .
+
+# Sätt miljövariabler
+ENV GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
+
+# Default: kör bara extract/load
+CMD ["python", "main.py"]
+
+# För dbt transformations:
+# CMD ["dbt", "run"]
