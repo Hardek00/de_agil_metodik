@@ -12,5 +12,6 @@ service-account-key.json
 kod/venv/
 venv/
 kod/bq/
+kod/docker/
 
-
+kod/

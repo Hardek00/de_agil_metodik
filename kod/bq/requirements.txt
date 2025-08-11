@@ -1,6 +1,0 @@
-requests==2.31.0
-google-cloud-bigquery==3.13.0
-pandas==2.1.4
-python-dotenv==1.0.0
-dbt-core==1.7.0
-dbt-bigquery==1.7.0
