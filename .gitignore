@@ -11,4 +11,6 @@ service-account-key.json
 # Ignorera hela kod-mappen tillfälligt
 kod/venv/
 venv/
+kod/bq/
+
 
