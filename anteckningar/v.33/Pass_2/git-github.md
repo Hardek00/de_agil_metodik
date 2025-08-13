@@ -92,6 +92,7 @@ GitHub är en **webbplattform** som hostar Git-repositories. Det är en social p
 | `git push -u origin <branch>` | Skickar och sätter upstream (första gången). |
 | `git pull origin <branch>` | Hämtar och slår ihop ändringar från GitHub. |
 | `git fetch` | Hämtar ändringar utan att slå ihop dem. |
+| `git fetch origin` | Hämtar alla branches och uppdateringar från remote. |
 
 ### Komplett samarbetsflöde med Pull Requests
 
@@ -187,6 +188,59 @@ För SSH-setup, se separat guide: `ssh-guide.md`
 git checkout -- <fil>          # Ångra ocommittade ändringar i fil
 git reset HEAD~1                # Ångra senaste commit (behåll ändringar)
 git reset --hard HEAD~1         # Ångra senaste commit (ta bort ändringar)
+```
+
+### Fetch vs Pull: Viktiga skillnader
+
+**`git pull` = `git fetch` + `git merge`**
+
+#### Git Fetch: "Kolla läget utan att ändra"
+```bash
+git fetch origin          # Hämta alla uppdateringar från remote
+git fetch origin main     # Hämta bara main-branch
+```
+
+**Vad händer vid fetch:**
+- Laddar ner nya commits från GitHub
+- Uppdaterar remote-tracking branches (`origin/main`, `origin/feature-branch`)
+- **Ändrar INTE din lokala arbetskopia eller nuvarande branch**
+- Du kan inspektera ändringar innan du bestämmer dig för att slå ihop
+
+**När använder man fetch:**
+- **Innan du börjar jobba:** Se vad som hänt medan du var borta
+- **Innan merge/rebase:** Kontrollera vad som kommer att slås ihop
+- **I automatiserade scripts:** Hämta data utan att påverka arbetskopian
+- **När du är osäker:** "Låt mig kolla vad som finns innan jag ändrar något"
+
+#### Praktiskt exempel - fetch först, sedan merge:
+```bash
+# 1. Kolla vad som hänt på main
+git fetch origin
+git log --oneline main..origin/main    # Visa nya commits
+
+# 2. Om det ser bra ut, slå ihop
+git checkout main
+git merge origin/main
+
+# Eller använd pull direkt (gör samma sak)
+git pull origin main
+```
+
+#### När är fetch extra användbart:
+```bash
+# Scenario 1: Kolla om din feature-branch konfliktar med main
+git fetch origin
+git checkout feature/min-branch
+git merge origin/main    # Testa merge lokalt innan PR
+
+# Scenario 2: Se alla nya branches som teamet skapat
+git fetch origin
+git branch -r            # Lista alla remote branches
+
+# Scenario 3: Inspektera någon annans branch innan checkout
+git fetch origin
+git log origin/feature/andras-branch --oneline
+git checkout origin/feature/andras-branch  # Read-only kolla
 ```
 
 ### Hantera merge-konflikter
