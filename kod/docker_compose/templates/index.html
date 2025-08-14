@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Demo - Users</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .container { max-width: 600px; }
+        h1 { color: #333; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐳 Docker Compose Demo</h1>
+        
+        {% if error %}
+        <div class="status error">
+            <strong>Database Error:</strong> {{ error }}
+        </div>
+        {% else %}
+        <div class="status success">
+            <strong>✅ Connected to PostgreSQL!</strong>
+        </div>
+        {% endif %}
+
+        <h2>Users from Database:</h2>
+        {% if users %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td>{{ user[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No users found in database.</p>
+        {% endif %}
+
+        <h3>Services Running:</h3>
+        <ul>
+            <li><strong>Web:</strong> Flask app (this page)</li>
+            <li><strong>Database:</strong> PostgreSQL container</li>
+        </ul>
+
+        <p><em>Data is loaded from init.sql automatically when database starts!</em></p>
+    </div>
+</body>
+</html>
