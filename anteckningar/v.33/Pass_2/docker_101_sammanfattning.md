@@ -70,7 +70,6 @@ docker build -t <name:tag> .
 docker run -p 5000:8080 --name <ctr> <image>
 docker stop <ctr> && docker rm <ctr>
 docker logs -f <ctr>
-docker exec -it <ctr> sh   # eller bash
 ```
 
 ## Vanliga Dockerfile-instruktioner
