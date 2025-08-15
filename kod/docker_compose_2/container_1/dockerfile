@@ -1,0 +1,16 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Installera Flask, requests och curl för health check
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+RUN pip install flask requests
+
+# Kopiera applikationsfil
+COPY app_1.py .
+
+# Exponera port 5050
+EXPOSE 5050
+
+# Starta Flask-appen
+CMD ["python", "app_1.py"]

@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Container 1: Frontend/Webbgränssnitt
+  word-frontend:
+    build: 
+      context: ./container_1
+      dockerfile: dockerfile
+    container_name: word-frontend
+    ports:
+      - "5050:5050"  # Webbgränssnitt på localhost:5050
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - word-network
+    depends_on:
+      word-database:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5050/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # Container 2: Backend/Databas
+  word-database:
+    build:
+      context: ./container_2
+      dockerfile: dockerfile
+    container_name: word-database
+    ports:
+      - "5001:5001"  # API för intern kommunikation (valfritt exponerad)
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - word-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+# Nätverk för container-kommunikation
+networks:
+  word-network:
+    driver: bridge
