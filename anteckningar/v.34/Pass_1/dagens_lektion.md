@@ -7,11 +7,11 @@
 
 ## 2. Docker Fortsättning
 - **Demo av Docker Compose**: Visa hur Docker Compose används för att hantera multi-container applikationer.
-- **Demo av [docker_compose](../../kod/docker_compose/)** och [docker_compose_2](../../kod/docker_compose_2/): En mer avancerad demonstration med två containers som kommunicerar.
+- **Demo av [docker_compose](../../../kod/docker_compose/)** och [docker_compose_2](../../../kod/docker_compose_2/): En mer avancerad demonstration med två containers som kommunicerar.
 
 ## 3. Övningar i Docker
-- **[dockerize_me.md](../../exercises/dockerize_me.md)**: Praktisk övning där eleverna containeriserar Python-appar.
-- **[docker-ovningar.md](../../exercises/docker-ovningar.md)**: Ytterligare övningar för att förstärka Docker-kunskaper.
+- **[dockerize_me.md](../../../exercises/dockerize_me.md)**: Praktisk övning där eleverna containeriserar Python-appar.
+- **[docker-ovningar.md](../../../exercises/docker-ovningar.md)**: Ytterligare övningar för att förstärka Docker-kunskaper.
 
 ## 4. Genomgång CICD (Teori)
 - **[cicd.md](../../v.34/Pass_1/cicd.md)**: Grundläggande teori om CI/CD.
@@ -28,7 +28,7 @@
 - Visa hur man sätter upp och kör en GitHub Actions workflow för linting.
 
 ## 8. Testa på CI i GitHub Actions
-- **[linting.md](../../exercises/linting.md)**: Praktisk övning där eleverna implementerar CI för linting i sina projekt.
+- **[linting.md](../../../exercises/linting.md)**: Praktisk övning där eleverna implementerar CI för linting i sina projekt.
 
 ## 9. Andra Övningar
-- **[cicd_ovningar.md](../../exercises/cicd_ovningar.md)**: Ytterligare övningar för att förstärka CI/CD-kunskaper.
+- **[cicd_ovningar.md](../../../exercises/cicd_ovningar.md)**: Ytterligare övningar för att förstärka CI/CD-kunskaper.
