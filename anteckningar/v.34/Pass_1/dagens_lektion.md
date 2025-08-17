@@ -3,15 +3,15 @@
 ## 1. Recap + Vad vi ska lära oss
 - **Recap**: Gå igenom vad vi har lärt oss hittills och sätta dagens lektion i kontext.
 - **Mål för dagen**: Förstå och implementera Docker Compose, CI/CD, och linting i praktiken.
-- **[git_workflow.md](../../anteckningar/v.34/Pass_2/git_workflow.md)**: Kolla gärna på den filen som repetition på hur man hanterar git och dess flow.
+- **[git_workflow.md](../../anteckningar/v.33/Pass_2/git_workflow.md)**: Kolla gärna på den filen som repetition på hur man hanterar git och dess flow.
 
 ## 2. Docker Fortsättning
 - **Demo av Docker Compose**: Visa hur Docker Compose används för att hantera multi-container applikationer.
-- **Demo av [docker_compose](../kod/docker_compose/)** och [docker_compose_2](../kod/docker_compose_2/): En mer avancerad demonstration med två containers som kommunicerar.
+- **Demo av [docker_compose](../../kod/docker_compose/)** och [docker_compose_2](../../kod/docker_compose_2/): En mer avancerad demonstration med två containers som kommunicerar.
 
 ## 3. Övningar i Docker
-- **[dockerize_me.md](../exercises/dockerize_me.md)**: Praktisk övning där eleverna containeriserar Python-appar.
-- **[docker-ovningar.md](../exercises/docker-ovningar.md)**: Ytterligare övningar för att förstärka Docker-kunskaper.
+- **[dockerize_me.md](../../exercises/dockerize_me.md)**: Praktisk övning där eleverna containeriserar Python-appar.
+- **[docker-ovningar.md](../../exercises/docker-ovningar.md)**: Ytterligare övningar för att förstärka Docker-kunskaper.
 
 ## 4. Genomgång CICD (Teori)
 - **[cicd.md](../../anteckningar/v.34/Pass_1/cicd.md)**: Grundläggande teori om CI/CD.
