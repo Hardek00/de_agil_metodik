@@ -14,4 +14,9 @@ venv/
 kod/bq/
 kod/docker/
 kod/bash/
-
+kod/api/.env
+kod/api/fastapi/__pycache__/
+kod/api/fastapi_basemodel/__pycache__/
+kod/api/batch_script/__pycache__/
+kod/api/fetch_write/ingestion/.env
+kod/api/fetch_write/db/.env
