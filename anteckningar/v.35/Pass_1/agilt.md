@@ -192,6 +192,21 @@ Acceptanskriterier:
 - Då ska jag omdirigeras till startsidan
 ```
 
+#### Epics
+- Definition: Större, värdeorienterat arbete som spänner över flera stories och ofta flera sprintar. Samlar relaterade user stories som tillsammans levererar ett användarutfall.
+- När: När en feature är för stor för en enskild sprint eller kräver flera steg/team.
+- Hur bryta ner: Skiva vertikalt i värdesnitt (användarresa, arbetsflödessteg, datadelningsgränser). Undvik tekniska-lager‑skivor utan användarvärde.
+- Acceptans på epik‑nivå: Formulera önskat utfall/mått (t.ex. “användare kan X end‑to‑end”). Epiken är klar när alla stories är Done och utfallet uppnås.
+- Estimering & uppföljning: T‑shirt‑storlek (S/M/L) på epik; story points på stories. Följ procent klart via antal stories Done.
+- Spårbarhet: Epic → stories → tasks. Länka i verktyget och i `docs/roadmap.md`.
+- Verktyg: Jira har Epics. I GitHub kan man approximera med Milestones/Projects + label `epic:<namn>`.
+
+Exempel på epik → stories:
+- Epik: “Exportera rapporter till CSV”
+  - Story A: Ladda ned en enkel dataset som CSV
+  - Story B: Välj kolumner och filtrera innan export
+  - Story C: Schema och filnamnsstandard i `docs/`
+
 ### 2. Sprint Backlog
 **Vad det är:**
 - Subset av Product Backlog för aktuell Sprint
