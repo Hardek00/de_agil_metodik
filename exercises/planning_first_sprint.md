@@ -37,21 +37,22 @@ Att som team planera och starta Sprint 1 för ert kursprojekt: sätta upp repo, 
      "Som team vill vi kunna hämta väderdata från en publik API och spara den till JSON via ett körbart skript i Docker, validerat av CI (lint)."
 
 4) Backlog → Sprint Backlog
-   - Skapa 5–8 små user stories (issues).
+   - Skapa 5–8 små tasks eller user stories (issues). OBS. Ni behöver inte använda user story metoden, ni kan hålla er till tasks.
    - Exempelstory:
      - User story: "Som dataingenjör vill jag köra ett skript som hämtar data från <API> och skriver till `data/raw/YYYY-MM-DD.json` för att kunna analysera datat lokalt."
      - AC (exempel):
        - Given giltig konfiguration i `.env`, When jag kör `make ingest` eller `docker run ...`, Then skapas en JSON‑fil med ≥1 fält från källan.
        - When API är nere, Then loggas tydligt fel och program avslutas med kod ≠ 0.
 
-5) Definitioner
-   - Definition of Ready (DoR) – en story är "ready" om:
-     - Har tydlig beskrivningC, estimering, och inga blockerande beroenden.
-   - Definition of Done (DoD) – en story är "done" om:
+5) DoD
+   - Definition of Done (DoD) – en task eller story är "done" om  tex:
+
      - Kod pushad, PR reviewad och mergad
      - Lint (Ruff) grön i CI
      - Körbart lokalt (skript eller Docker) med uppdaterad `README`
      - Loggning finns på INFO‑nivå vid start/slut
+
+     Ni får i teamet själva bestäma och beskriva DoD.
 
 6) CI/CD och skelettkod
    - Lägg till GitHub Actions workflow för Ruff (och valfritt: `pytest -q` placeholder).
