@@ -28,13 +28,4 @@
 - Presentation: [GCP and Cloud for Data Engineering.pdf](./GCP%20and%20Cloud%20for%20Data%20Engineering.pdf)
 - Diskussion: när containerisera, när köra batch i moln (t.ex. Cloud Run)
 
-## 8. Guidad tur i GCP och IAM
-- Skapa nytt projekt, lägga till användare, tilldela roller
-- Läsning: [iam.md](./iam.md)
-
-## Material/Referenser
-- Agilt: [agilt.md](./agilt.md)
-- IAM (GCP): [iam.md](./iam.md)
-- Övningar: [tech_stack_sprint.md](../../../exercises/tech_stack_sprint.md), [planning_first_sprint.md](../../../exercises/planning_first_sprint.md)
-
 
