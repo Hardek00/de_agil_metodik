@@ -227,9 +227,9 @@ class DataPipeline:
             data = response.json()
             
             # Add timestamp to each record
-            current_time = datetime.utcnow()
+            current_time = datetime.now()
             for record in data:
-                record['fetched_at'] = current_time.isoformat()
+               record['fetched_at'] = current_time
             
             logger.info(f"Successfully fetched {len(data)} records")
             return data
