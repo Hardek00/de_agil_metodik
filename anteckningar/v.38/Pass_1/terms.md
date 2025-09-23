@@ -67,7 +67,16 @@ requirements.txt: Pinned list of Python dependencies.
 virtual environment (venv): Isolated Python environment per project.
 pip freeze: Output exact installed package versions.
 bash: Unix shell and scripting language for automation.
-
+wsl: 
+ELT
+ETL
+batch ingestion
+sprint
+scrum
+kanban
+task
+service account
+project (GCP)
 
 
 
